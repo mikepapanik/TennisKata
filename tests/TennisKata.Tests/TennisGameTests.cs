@@ -17,9 +17,7 @@ public class TennisGameTests
     [Fact]
     public void PlayerOneScoresFirstPoint_ShouldReturnFifteenLove()
     {
-        var game = new TennisGame();
-
-        game.PlayerOneScores();
+        var game = CreateGameWithScore(playerOneScore: 1, playerTwoScore: 0);
 
         var score = game.GetScore();
 
@@ -29,10 +27,7 @@ public class TennisGameTests
     [Fact]
     public void PlayerOneScoresSecondPoint_ShouldReturnThirtyLove()
     {
-        var game = new TennisGame();
-
-        game.PlayerOneScores();
-        game.PlayerOneScores();
+        var game = CreateGameWithScore(playerOneScore: 2, playerTwoScore: 0);
 
         var score = game.GetScore();
 
@@ -42,11 +37,7 @@ public class TennisGameTests
     [Fact]
     public void PlayerOneScoresThirdPoint_ShouldReturnFortyLove()
     {
-        var game = new TennisGame();
-
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-        game.PlayerOneScores();
+        var game = CreateGameWithScore(playerOneScore: 3, playerTwoScore: 0);
 
         var score = game.GetScore();
 
@@ -56,9 +47,7 @@ public class TennisGameTests
     [Fact]
     public void PlayerTwoScoresFirstPoint_ShouldReturnLoveFifteen()
     {
-        var game = new TennisGame();
-
-        game.PlayerTwoScores();
+        var game = CreateGameWithScore(playerOneScore: 0, playerTwoScore: 1);
 
         var score = game.GetScore();
 
@@ -68,10 +57,7 @@ public class TennisGameTests
     [Fact]
     public void PlayerTwoScoresSecondPoint_ShouldReturnLoveThirty()
     {
-        var game = new TennisGame();
-
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
+        var game = CreateGameWithScore(playerOneScore: 0, playerTwoScore: 2);
 
         var score = game.GetScore();
 
@@ -81,11 +67,7 @@ public class TennisGameTests
     [Fact]
     public void PlayerTwoScoresThirdPoint_ShouldReturnLoveForty()
     {
-        var game = new TennisGame();
-
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
+        var game = CreateGameWithScore(playerOneScore: 0, playerTwoScore: 3);
 
         var score = game.GetScore();
 
@@ -95,10 +77,7 @@ public class TennisGameTests
     [Fact]
     public void BothPlayersScoreOnePoint_ShouldReturnFifteenAll()
     {
-        var game = new TennisGame();
-
-        game.PlayerOneScores();
-        game.PlayerTwoScores();
+        var game = CreateGameWithScore(playerOneScore: 1, playerTwoScore: 1);
 
         var score = game.GetScore();
 
@@ -108,13 +87,7 @@ public class TennisGameTests
     [Fact]
     public void BothPlayersScoreTwoPoints_ShouldReturnThirtyAll()
     {
-        var game = new TennisGame();
-
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
+        var game = CreateGameWithScore(playerOneScore: 2, playerTwoScore: 2);
 
         var score = game.GetScore();
 
@@ -124,12 +97,7 @@ public class TennisGameTests
     [Fact]
     public void PlayerOneLeadsTwoToOne_ShouldReturnThirtyFifteen()
     {
-        var game = new TennisGame();
-
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-
-        game.PlayerTwoScores();
+        var game = CreateGameWithScore(playerOneScore: 2, playerTwoScore: 1);
 
         var score = game.GetScore();
 
@@ -139,14 +107,7 @@ public class TennisGameTests
     [Fact]
     public void PlayerOneLeadsThreeToTwo_ShouldReturnFortyThirty()
     {
-        var game = new TennisGame();
-
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
+        var game = CreateGameWithScore(playerOneScore: 3, playerTwoScore: 2);
 
         var score = game.GetScore();
 
@@ -156,12 +117,7 @@ public class TennisGameTests
     [Fact]
     public void PlayerTwoLeadsTwoToOne_ShouldReturnFifteenThirty()
     {
-        var game = new TennisGame();
-
-        game.PlayerOneScores();
-
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
+        var game = CreateGameWithScore(playerOneScore: 1, playerTwoScore: 2);
 
         var score = game.GetScore();
 
@@ -171,15 +127,7 @@ public class TennisGameTests
     [Fact]
     public void BothPlayersScoreThreePoints_ShouldReturnDeuce()
     {
-        var game = new TennisGame();
-
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
+        var game = CreateGameWithScore(playerOneScore: 3, playerTwoScore: 3);
 
         var score = game.GetScore();
 
@@ -189,17 +137,7 @@ public class TennisGameTests
     [Fact]
     public void BothPlayersScoreFourPoints_ShouldReturnDeuce()
     {
-        var game = new TennisGame();
-
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
+        var game = CreateGameWithScore(playerOneScore: 4, playerTwoScore: 4);
 
         var score = game.GetScore();
 
@@ -209,19 +147,7 @@ public class TennisGameTests
     [Fact]
     public void BothPlayersScoreFivePoints_ShouldReturnDeuce()
     {
-        var game = new TennisGame();
-
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
+        var game = CreateGameWithScore(playerOneScore: 5, playerTwoScore: 5);
 
         var score = game.GetScore();
 
@@ -231,16 +157,7 @@ public class TennisGameTests
     [Fact]
     public void PlayerOneScoresAfterDeuce_ShouldReturnAdvantagePlayerOne()
     {
-        var game = new TennisGame();
-
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
+        var game = CreateGameWithScore(playerOneScore: 4, playerTwoScore: 3);
 
         var score = game.GetScore();
 
@@ -250,16 +167,7 @@ public class TennisGameTests
     [Fact]
     public void PlayerTwoScoresAfterDeuce_ShouldReturnAdvantagePlayerTwo()
     {
-        var game = new TennisGame();
-
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
+        var game = CreateGameWithScore(playerOneScore: 3, playerTwoScore: 4);
 
         var score = game.GetScore();
 
@@ -269,18 +177,7 @@ public class TennisGameTests
     [Fact]
     public void PlayerOneLeadsFiveToFour_ShouldReturnAdvantagePlayerOne()
     {
-        var game = new TennisGame();
-
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
+        var game = CreateGameWithScore(playerOneScore: 5, playerTwoScore: 4);
 
         var score = game.GetScore();
 
@@ -290,18 +187,7 @@ public class TennisGameTests
     [Fact]
     public void PlayerTwoLeadsFiveToFour_ShouldReturnAdvantagePlayerTwo()
     {
-        var game = new TennisGame();
-
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
+        var game = CreateGameWithScore(playerOneScore: 4, playerTwoScore: 5);
 
         var score = game.GetScore();
 
@@ -311,12 +197,7 @@ public class TennisGameTests
     [Fact]
     public void PlayerOneScoresFourPointsWithoutOpponentScoring_ShouldReturnWinForPlayerOne()
     {
-        var game = new TennisGame();
-
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-        game.PlayerOneScores();
+        var game = CreateGameWithScore(playerOneScore: 4, playerTwoScore: 0);
 
         var score = game.GetScore();
 
@@ -326,15 +207,7 @@ public class TennisGameTests
     [Fact]
     public void PlayerOneLeadsFourToTwo_ShouldReturnWinForPlayerOne()
     {
-        var game = new TennisGame();
-
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
+        var game = CreateGameWithScore(playerOneScore: 4, playerTwoScore: 2);
 
         var score = game.GetScore();
 
@@ -344,17 +217,7 @@ public class TennisGameTests
     [Fact]
     public void PlayerOneLeadsFiveToThree_ShouldReturnWinForPlayerOne()
     {
-        var game = new TennisGame();
-
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
+        var game = CreateGameWithScore(playerOneScore: 5, playerTwoScore: 3);
 
         var score = game.GetScore();
 
@@ -364,12 +227,7 @@ public class TennisGameTests
     [Fact]
     public void PlayerTwoScoresFourPointsWithoutOpponentScoring_ShouldReturnWinForPlayerTwo()
     {
-        var game = new TennisGame();
-
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
+        var game = CreateGameWithScore(playerOneScore: 0, playerTwoScore: 4);
 
         var score = game.GetScore();
 
@@ -379,15 +237,7 @@ public class TennisGameTests
     [Fact]
     public void PlayerTwoLeadsFourToTwo_ShouldReturnWinForPlayerTwo()
     {
-        var game = new TennisGame();
-
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
+        var game = CreateGameWithScore(playerOneScore: 2, playerTwoScore: 4);
 
         var score = game.GetScore();
 
@@ -397,20 +247,28 @@ public class TennisGameTests
     [Fact]
     public void PlayerTwoLeadsFiveToThree_ShouldReturnWinForPlayerTwo()
     {
-        var game = new TennisGame();
-
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-        game.PlayerOneScores();
-
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
-        game.PlayerTwoScores();
+        var game = CreateGameWithScore(playerOneScore: 3, playerTwoScore: 5);
 
         var score = game.GetScore();
 
         Assert.Equal("Win for Player Two", score);
+    }
+
+    private static TennisGame CreateGameWithScore(int playerOneScore, int playerTwoScore)
+    {
+        var game = new TennisGame();
+
+        ScorePoints(playerOneScore, game.PlayerOneScores);
+        ScorePoints(playerTwoScore, game.PlayerTwoScores);
+
+        return game;
+    }
+
+    private static void ScorePoints(int points, Action scorePoint)
+    {
+        for (var i = 0; i < points; i++)
+        {
+            scorePoint();
+        }
     }
 }
