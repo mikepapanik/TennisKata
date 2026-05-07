@@ -17,12 +17,24 @@ public class TennisGame
 
     public string GetScore()
     {
+        if (IsDeuce())
+        {
+            return "Deuce";
+        }
+
         if (_playerOneScore == _playerTwoScore)
         {
             return $"{GetPointName(_playerOneScore)}-All";
         }
 
         return $"{GetPointName(_playerOneScore)}-{GetPointName(_playerTwoScore)}";
+    }
+
+    private bool IsDeuce()
+    {
+        return _playerOneScore >= 3 &&
+               _playerTwoScore >= 3 &&
+               _playerOneScore == _playerTwoScore;
     }
 
     private static string GetPointName(int score)

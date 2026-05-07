@@ -167,4 +167,64 @@ public class TennisGameTests
 
         Assert.Equal("Fifteen-Thirty", score);
     }
+
+    [Fact]
+    public void BothPlayersScoreThreePoints_ShouldReturnDeuce()
+    {
+        var game = new TennisGame();
+
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+
+        var score = game.GetScore();
+
+        Assert.Equal("Deuce", score);
+    }
+
+    [Fact]
+    public void BothPlayersScoreFourPoints_ShouldReturnDeuce()
+    {
+        var game = new TennisGame();
+
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+
+        var score = game.GetScore();
+
+        Assert.Equal("Deuce", score);
+    }
+
+    [Fact]
+    public void BothPlayersScoreFivePoints_ShouldReturnDeuce()
+    {
+        var game = new TennisGame();
+
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+
+        var score = game.GetScore();
+
+        Assert.Equal("Deuce", score);
+    }
 }
