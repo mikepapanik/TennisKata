@@ -2,6 +2,11 @@
 
 public class TennisGame
 {
+    private const int MinimumPointsToWin = 4;
+    private const int MinimumPointsForDeuce = 3;
+    private const int RequiredLeadToWin = 2;
+    private const int RequiredLeadForAdvantage = 1;
+
     private int _playerOneScore;
     private int _playerTwoScore;
 
@@ -32,7 +37,7 @@ public class TennisGame
             return $"Advantage {GetLeadingPlayerName()}";
         }
 
-        if (_playerOneScore == _playerTwoScore)
+        if (ScoresAreEqual())
         {
             return $"{GetPointName(_playerOneScore)}-All";
         }
@@ -42,22 +47,42 @@ public class TennisGame
 
     private bool HasWinner()
     {
-        return (_playerOneScore >= 4 || _playerTwoScore >= 4) &&
-               Math.Abs(_playerOneScore - _playerTwoScore) >= 2;
+        return HasPlayerReachedMinimumPointsToWin() &&
+               GetScoreDifference() >= RequiredLeadToWin;
+    }
+
+    private bool HasPlayerReachedMinimumPointsToWin()
+    {
+        return _playerOneScore >= MinimumPointsToWin ||
+               _playerTwoScore >= MinimumPointsToWin;
     }
 
     private bool IsDeuce()
     {
-        return _playerOneScore >= 3 &&
-               _playerTwoScore >= 3 &&
-               _playerOneScore == _playerTwoScore;
+        return BothPlayersReachedDeuceRange() &&
+               ScoresAreEqual();
     }
 
     private bool HasAdvantage()
     {
-        return _playerOneScore >= 3 &&
-               _playerTwoScore >= 3 &&
-               Math.Abs(_playerOneScore - _playerTwoScore) == 1;
+        return BothPlayersReachedDeuceRange() &&
+               GetScoreDifference() == RequiredLeadForAdvantage;
+    }
+
+    private bool BothPlayersReachedDeuceRange()
+    {
+        return _playerOneScore >= MinimumPointsForDeuce &&
+               _playerTwoScore >= MinimumPointsForDeuce;
+    }
+
+    private bool ScoresAreEqual()
+    {
+        return _playerOneScore == _playerTwoScore;
+    }
+
+    private int GetScoreDifference()
+    {
+        return Math.Abs(_playerOneScore - _playerTwoScore);
     }
 
     private string GetLeadingPlayerName()
