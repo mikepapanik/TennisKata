@@ -22,6 +22,11 @@ public class TennisGame
             return "Deuce";
         }
 
+        if (HasAdvantage())
+        {
+            return $"Advantage {GetLeadingPlayerName()}";
+        }
+
         if (_playerOneScore == _playerTwoScore)
         {
             return $"{GetPointName(_playerOneScore)}-All";
@@ -35,6 +40,23 @@ public class TennisGame
         return _playerOneScore >= 3 &&
                _playerTwoScore >= 3 &&
                _playerOneScore == _playerTwoScore;
+    }
+
+    private bool HasAdvantage()
+    {
+        return _playerOneScore >= 3 &&
+               _playerTwoScore >= 3 &&
+               Math.Abs(_playerOneScore - _playerTwoScore) == 1;
+    }
+
+    private string GetLeadingPlayerName()
+    {
+        if (_playerOneScore > _playerTwoScore)
+        {
+            return "Player One";
+        }
+
+        return "Player Two";
     }
 
     private static string GetPointName(int score)

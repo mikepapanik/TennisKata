@@ -227,4 +227,84 @@ public class TennisGameTests
 
         Assert.Equal("Deuce", score);
     }
+
+    [Fact]
+    public void PlayerOneScoresAfterDeuce_ShouldReturnAdvantagePlayerOne()
+    {
+        var game = new TennisGame();
+
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+
+        var score = game.GetScore();
+
+        Assert.Equal("Advantage Player One", score);
+    }
+
+    [Fact]
+    public void PlayerTwoScoresAfterDeuce_ShouldReturnAdvantagePlayerTwo()
+    {
+        var game = new TennisGame();
+
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+
+        var score = game.GetScore();
+
+        Assert.Equal("Advantage Player Two", score);
+    }
+
+    [Fact]
+    public void PlayerOneLeadsFiveToFour_ShouldReturnAdvantagePlayerOne()
+    {
+        var game = new TennisGame();
+
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+
+        var score = game.GetScore();
+
+        Assert.Equal("Advantage Player One", score);
+    }
+
+    [Fact]
+    public void PlayerTwoLeadsFiveToFour_ShouldReturnAdvantagePlayerTwo()
+    {
+        var game = new TennisGame();
+
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+
+        var score = game.GetScore();
+
+        Assert.Equal("Advantage Player Two", score);
+    }
 }
