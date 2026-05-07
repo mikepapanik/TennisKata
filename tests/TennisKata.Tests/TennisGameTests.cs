@@ -120,4 +120,51 @@ public class TennisGameTests
 
         Assert.Equal("Thirty-All", score);
     }
+
+    [Fact]
+    public void PlayerOneLeadsTwoToOne_ShouldReturnThirtyFifteen()
+    {
+        var game = new TennisGame();
+
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+
+        game.PlayerTwoScores();
+
+        var score = game.GetScore();
+
+        Assert.Equal("Thirty-Fifteen", score);
+    }
+
+    [Fact]
+    public void PlayerOneLeadsThreeToTwo_ShouldReturnFortyThirty()
+    {
+        var game = new TennisGame();
+
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+
+        var score = game.GetScore();
+
+        Assert.Equal("Forty-Thirty", score);
+    }
+
+    [Fact]
+    public void PlayerTwoLeadsTwoToOne_ShouldReturnFifteenThirty()
+    {
+        var game = new TennisGame();
+
+        game.PlayerOneScores();
+
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+
+        var score = game.GetScore();
+
+        Assert.Equal("Fifteen-Thirty", score);
+    }
 }
