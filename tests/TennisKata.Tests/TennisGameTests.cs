@@ -91,4 +91,33 @@ public class TennisGameTests
 
         Assert.Equal("Love-Forty", score);
     }
+
+    [Fact]
+    public void BothPlayersScoreOnePoint_ShouldReturnFifteenAll()
+    {
+        var game = new TennisGame();
+
+        game.PlayerOneScores();
+        game.PlayerTwoScores();
+
+        var score = game.GetScore();
+
+        Assert.Equal("Fifteen-All", score);
+    }
+
+    [Fact]
+    public void BothPlayersScoreTwoPoints_ShouldReturnThirtyAll()
+    {
+        var game = new TennisGame();
+
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+
+        var score = game.GetScore();
+
+        Assert.Equal("Thirty-All", score);
+    }
 }

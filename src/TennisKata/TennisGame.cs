@@ -17,36 +17,31 @@ public class TennisGame
 
     public string GetScore()
     {
-        if (_playerOneScore == 1)
+        if (_playerOneScore == _playerTwoScore)
         {
-            return "Fifteen-Love";
+            return $"{GetPointName(_playerOneScore)}-All";
         }
 
-        if (_playerOneScore == 2)
+        return $"{GetPointName(_playerOneScore)}-{GetPointName(_playerTwoScore)}";
+    }
+
+    private static string GetPointName(int score)
+    {
+        if (score == 0)
         {
-            return "Thirty-Love";
+            return "Love";
         }
 
-        if (_playerOneScore == 3)
+        if (score == 1)
         {
-            return "Forty-Love";
+            return "Fifteen";
         }
 
-        if (_playerTwoScore == 1)
+        if (score == 2)
         {
-            return "Love-Fifteen";
+            return "Thirty";
         }
 
-        if (_playerTwoScore == 2)
-        {
-            return "Love-Thirty";
-        }
-
-        if (_playerTwoScore == 3)
-        {
-            return "Love-Forty";
-        }
-
-        return "Love-All";
+        return "Forty";
     }
 }
