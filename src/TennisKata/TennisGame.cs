@@ -3,10 +3,16 @@
 public class TennisGame
 {
     private int _playerOneScore;
+    private int _playerTwoScore;
 
     public void PlayerOneScores()
     {
         _playerOneScore++;
+    }
+
+    public void PlayerTwoScores()
+    {
+        _playerTwoScore++;
     }
 
     public string GetScore()
@@ -24,6 +30,21 @@ public class TennisGame
         if (_playerOneScore == 3)
         {
             return "Forty-Love";
+        }
+
+        if (_playerTwoScore == 1)
+        {
+            return "Love-Fifteen";
+        }
+
+        if (_playerTwoScore == 2)
+        {
+            return "Love-Thirty";
+        }
+
+        if (_playerTwoScore == 3)
+        {
+            return "Love-Forty";
         }
 
         return "Love-All";
