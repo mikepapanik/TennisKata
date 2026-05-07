@@ -307,4 +307,110 @@ public class TennisGameTests
 
         Assert.Equal("Advantage Player Two", score);
     }
+
+    [Fact]
+    public void PlayerOneScoresFourPointsWithoutOpponentScoring_ShouldReturnWinForPlayerOne()
+    {
+        var game = new TennisGame();
+
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+
+        var score = game.GetScore();
+
+        Assert.Equal("Win for Player One", score);
+    }
+
+    [Fact]
+    public void PlayerOneLeadsFourToTwo_ShouldReturnWinForPlayerOne()
+    {
+        var game = new TennisGame();
+
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+
+        var score = game.GetScore();
+
+        Assert.Equal("Win for Player One", score);
+    }
+
+    [Fact]
+    public void PlayerOneLeadsFiveToThree_ShouldReturnWinForPlayerOne()
+    {
+        var game = new TennisGame();
+
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+
+        var score = game.GetScore();
+
+        Assert.Equal("Win for Player One", score);
+    }
+
+    [Fact]
+    public void PlayerTwoScoresFourPointsWithoutOpponentScoring_ShouldReturnWinForPlayerTwo()
+    {
+        var game = new TennisGame();
+
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+
+        var score = game.GetScore();
+
+        Assert.Equal("Win for Player Two", score);
+    }
+
+    [Fact]
+    public void PlayerTwoLeadsFourToTwo_ShouldReturnWinForPlayerTwo()
+    {
+        var game = new TennisGame();
+
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+
+        var score = game.GetScore();
+
+        Assert.Equal("Win for Player Two", score);
+    }
+
+    [Fact]
+    public void PlayerTwoLeadsFiveToThree_ShouldReturnWinForPlayerTwo()
+    {
+        var game = new TennisGame();
+
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+        game.PlayerOneScores();
+
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+        game.PlayerTwoScores();
+
+        var score = game.GetScore();
+
+        Assert.Equal("Win for Player Two", score);
+    }
 }

@@ -17,6 +17,11 @@ public class TennisGame
 
     public string GetScore()
     {
+        if (HasWinner())
+        {
+            return $"Win for {GetLeadingPlayerName()}";
+        }
+
         if (IsDeuce())
         {
             return "Deuce";
@@ -33,6 +38,12 @@ public class TennisGame
         }
 
         return $"{GetPointName(_playerOneScore)}-{GetPointName(_playerTwoScore)}";
+    }
+
+    private bool HasWinner()
+    {
+        return (_playerOneScore >= 4 || _playerTwoScore >= 4) &&
+               Math.Abs(_playerOneScore - _playerTwoScore) >= 2;
     }
 
     private bool IsDeuce()
